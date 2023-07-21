@@ -10,6 +10,17 @@ const app = express();
 // Create a new bot instance
 const {TOKEN, SERVER_URL} = process.env
 const URI = `/webhook/${TOKEN}`
+const webhookURL = `${SERVER_URL}${URI}`
+
+// configuring the bot via Telegram API to use our route below as webhook
+const setupWebhook = async () => {
+  try {
+      const { data } = await axios.get(`${TELEGRAM_API}/setWebhook?url=${webhookURL}&drop_pending_updates=true`)
+      console.log(data)
+  } catch (error) {
+      return error
+  }
+}
 
 const bot = new TelegramBot(TOKEN, { polling: true });
 
@@ -58,8 +69,9 @@ bot.on('callback_query', (callbackQuery)=> {
 
 
 
-app.listen( process.env.PORT || PORT, () => {
+app.listen( process.env.PORT || PORT, async () => {
   console.log(`Express server listening on port ${PORT}`);
+  await setupWebhook()
 });
 
 
