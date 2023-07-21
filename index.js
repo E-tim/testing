@@ -13,6 +13,10 @@ const URI = `/webhook/${TOKEN}`
 
 const bot = new TelegramBot(TOKEN, { polling: true });
 
+app.get('/',(req, res)=> {
+  res.send('working')
+})
+
 app.post(URI, (req, res) => {
   bot.processUpdate(req.body);
   res.sendStatus(200);
@@ -29,8 +33,6 @@ const keyboard = {
   inline_keyboard: commands.map((command) => [{ text: command.text, callback_data: command.callback_data }])
  
 };
-
-
 
 
 // we're using the API's in-built "onText" method
@@ -56,7 +58,7 @@ bot.on('callback_query', (callbackQuery)=> {
 
 
 
-app.listen(PORT, () => {
+app.listen( process.env.PORT || PORT, () => {
   console.log(`Express server listening on port ${PORT}`);
 });
 
