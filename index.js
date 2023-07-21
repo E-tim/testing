@@ -1,18 +1,22 @@
 const express = require('express')
 const TelegramBot = require('node-telegram-bot-api');
+const axios = require('axios')
 require('dotenv').config()
 const PORT = 4000
 
-const token = process.env.TOKEN
-
-
-
-
-
+const app = express();
 
 
 // Create a new bot instance
-const bot = new TelegramBot(token, { polling: true });
+const {TOKEN, SERVER_URL} = process.env
+const URI = `/webhook/${TOKEN}`
+
+const bot = new TelegramBot(TOKEN, { polling: true });
+
+app.post(URI, (req, res) => {
+  bot.processUpdate(req.body);
+  res.sendStatus(200);
+});
 
 const commands = [
   // [{text: 'Balance', callback_data: 'balance'},{text: 'Add Fund', callback_data: 'add_fund'}],
@@ -25,6 +29,8 @@ const keyboard = {
   inline_keyboard: commands.map((command) => [{ text: command.text, callback_data: command.callback_data }])
  
 };
+
+
 
 
 // we're using the API's in-built "onText" method
@@ -47,6 +53,12 @@ bot.on('callback_query', (callbackQuery)=> {
 
   if(category !== 'undefined') bot.sendMessage(message.chat.id, `You sent a request of ${category}`)
 })
+
+
+
+app.listen(PORT, () => {
+  console.log(`Express server listening on port ${PORT}`);
+});
 
 
 
