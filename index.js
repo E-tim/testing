@@ -24,9 +24,9 @@ const setupWebhook = async () => {
 
 const bot = new TelegramBot(TOKEN, { polling: true });
 
-// app.get('/',(req, res)=> {
-//   res.send('working')
-// })
+app.get('/',(req, res)=> {
+  res.send('working')
+})
 
 app.post(URI, (req, res) => {
   bot.processUpdate(req.body);
