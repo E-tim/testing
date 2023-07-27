@@ -11,6 +11,8 @@ const app = express();
 const {TOKEN, SERVER_URL} = process.env
 const URI = `/webhook/${TOKEN}`
 const webhookURL = `${SERVER_URL}${URI}`
+const TELEGRAM_API = `https://api.telegram.org/bot${TOKEN}`
+
 
 // configuring the bot via Telegram API to use our route below as webhook
 const setupWebhook = async () => {
