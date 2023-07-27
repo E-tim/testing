@@ -1,6 +1,7 @@
 const express = require('express')
 const TelegramBot = require('node-telegram-bot-api');
 const axios = require('axios')
+
 require('dotenv').config()
 const PORT = 4000
 
@@ -50,23 +51,36 @@ const keyboard = {
 
 // we're using the API's in-built "onText" method
 // it takes in a regex and the message
-bot.onText(/\/start/, (msg) => {
+bot.onText(/\/start/, async(msg) => {
 
   const chatId = msg.chat.id
 
   // listens for "/start" and responds with the greeting below.
-  bot.sendMessage(chatId, 'Please select a command:', { reply_markup: keyboard });
+  
+  // bot.sendMessage(chatId, 'Please select a command:', { reply_markup: keyboard });
+
+  await axios.post(`${TELEGRAM_API}/sendMessage`, {
+    chat_id : chatId,
+    text: 'Please select a command:',
+    reply_markup: JSON.stringify(keyboard)
+  })
 
 });
 
-bot.on('callback_query', (callbackQuery)=> {
+bot.on('callback_query', async(callbackQuery)=> {
   const message = callbackQuery.message;
   const category = callbackQuery.data
 
   console.log(category)
   console.log(message)
 
-  if(category !== 'undefined') bot.sendMessage(message.chat.id, `You sent a request of ${category}`)
+  // if(category !== 'undefined') bot.sendMessage(message.chat.id, `You sent a request of ${category}`)
+  if(category !== 'undefined') {
+    await axios.post(`${TELEGRAM_API}/sendMessage`, {
+      chat_id : message.chat.id,
+      text: `You sent a request of ${category}`,
+    })
+  }
 })
 
 
