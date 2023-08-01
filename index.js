@@ -1,17 +1,20 @@
 const express = require('express')
 const TelegramBot = require('node-telegram-bot-api');
 const axios = require('axios')
+const bodyParser = require('body-parser');
 
 require('dotenv').config()
 const PORT = 4000
 
 const app = express();
 
+app.use(bodyParser.json());
+
 
 // Create a new bot instance
 const {TOKEN, SERVER_URL} = process.env
 const URI = `/webhook/${TOKEN}`
-const webhookURL = `${SERVER_URL}${URI}`
+const webhookURL = `${SERVER_URL || 'https://testing-one-coral.vercel.app'}${URI}`
 const TELEGRAM_API = `https://api.telegram.org/bot${TOKEN}`
 
 
@@ -48,7 +51,6 @@ const keyboard = {
  
 };
 
-
 // we're using the API's in-built "onText" method
 // it takes in a regex and the message
 bot.onText(/\/start/, async(msg) => {
@@ -66,6 +68,9 @@ bot.onText(/\/start/, async(msg) => {
   })
 
 });
+
+
+
 
 bot.on('callback_query', async(callbackQuery)=> {
   const message = callbackQuery.message;
