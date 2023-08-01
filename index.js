@@ -23,18 +23,26 @@ const setupWebhook = async () => {
   try {
       const { data } = await axios.get(`${TELEGRAM_API}/setWebhook?url=${webhookURL}&drop_pending_updates=true`)
       console.log(data)
+      
   } catch (error) {
       return error
   }
 }
 
-const bot = new TelegramBot(TOKEN, { polling: true });
+const bot = new TelegramBot(TOKEN, { polling: false });
 
-app.get('/',(req, res)=> {
-  res.send('working')
-})
+// app.get('/',(req, res)=> {
+//   res.send('working')
+// })
 
-app.post(URI, (req, res) => {
+app.post(URI, async(req, res) => {
+  const update = req.body
+  if (update.message && update.message.text) {
+    const text = update.message.text
+    if (text === '/start') {
+      console.log(`w`)
+    }
+  }
   bot.processUpdate(req.body);
   res.sendStatus(200);
 });
