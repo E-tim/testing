@@ -17,21 +17,7 @@ const URI = `/webhook/${TOKEN}`;
 const webhookURL = `${SERVER_URL || 'https://testing-one-coral.vercel.app/'}${URI}`;
 const TELEGRAM_API = `https://api.telegram.org/bot${TOKEN}`;
 
-// Configuring the bot via Telegram API to use our route below as a webhook
-const setupWebhook = async () => {
-  try {
-    const { data } = await axios.post(`${TELEGRAM_API}/setWebhook`, {
-      url: webhookURL,
-      drop_pending_updates: true,
-    });
-    console.log(data);
-  } catch (error) {
-    return error;
-  }
-};
-
-// Creating a bot instance with polling disabled for better webhook handling
-const bot = new TelegramBot(TOKEN, { polling: false });
+const bot = new TelegramBot(TOKEN, {polling: true})
 
 const commands = [
   // [{text: 'Balance', callback_data: 'balance'},{text: 'Add Fund', callback_data: 'add_fund'}],
@@ -45,24 +31,14 @@ const keyboard = {
  
 };
 
-app.post(URI, (req, res) => {
-  const update = req.body;
-  const chatId = req.body.message.chat.id
-  console.log(chatId)
-  if (update.message && update.message.text) {
-    const text = update.message.text;
-    if (text === '/start') {
-      console.log(update);
-      bot.sendMessage(chatId, 'Please select a command:', {reply_markup: JSON.stringify(keyboard)})
-    }
-  }
-  bot.processUpdate(req.body);
-  res.sendStatus(200);
-});
+bot.on('message', async(msg)=> {
+  console.log(msg)
+  bot.sendMessage(msg.chat.id, "hello", {reply_markup: keyboard})
+})
 
 // ... Rest of your code for handling commands and callback queries ...
 
 app.listen(process.env.PORT || PORT, async () => {
   console.log(`Express server listening on port ${PORT}`);
-  await setupWebhook();
+  // await setupWebhook();
 });
