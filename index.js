@@ -40,6 +40,23 @@ bot.on('message', async(msg)=> {
   bot.sendMessage(msg.chat.id, "hello", {reply_markup: keyboard})
 })
 
+
+const serverUrl = 'https://testing-one-coral.vercel.app/'; // Replace with your server URL
+
+const refreshServer = () => {
+  axios.get(serverUrl)
+    .then((response) => {
+      console.log(`Refreshed ${serverUrl} at ${new Date().toLocaleString()}`);
+    })
+    .catch((error) => {
+      console.error(`Error refreshing ${serverUrl}:`, error.message);
+    });
+};
+
+// Call the refreshServer function every 10 seconds
+const refreshInterval = 3000; // 10 seconds
+setInterval(refreshServer, refreshInterval);
+
 // ... Rest of your code for handling commands and callback queries ...
 
 app.listen(process.env.PORT || PORT, async () => {
