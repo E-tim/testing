@@ -24,6 +24,22 @@ app.get('/', (req, res)=> {
 
 const bot = new TelegramBot(TOKEN, {polling: true})
 
+// Create a WebSocket client to connect to the external WebSocket server
+const wss = new WebSocket('ws://localhost:8080/');
+
+// Handle WebSocket client events
+wss.on('open', () => {
+  console.log('WebSocket connection opened');
+});
+
+wss.on('message', (data) => {
+  console.log('Received message from WebSocket server:', data);
+});
+
+wss.on('close', () => {
+  console.log('WebSocket connection closed');
+});
+
 const commands = [
   // [{text: 'Balance', callback_data: 'balance'},{text: 'Add Fund', callback_data: 'add_fund'}],
   { text: 'Bank Log', callback_data: 'bank_log' },
@@ -39,25 +55,13 @@ const keyboard = {
 bot.on('message', async(msg)=> {
   console.log(msg)
   bot.sendMessage(msg.chat.id, "hello", {reply_markup: keyboard})
+
+  // Send real-time updates to the WebSocket server when a new message is received
+  wss.send(JSON.stringify({ type: 'message', data: msg }));
 })
 
 
-// Create a WebSocket server
-const wss = new WebSocket.Server({ noServer: true });
 
-wss.on('connection', (ws) => {
-  console.log('WebSocket client connected');
-
-  // Send real-time updates to the connected WebSocket client
-  setInterval(() => {
-    ws.send('This is a real-time update from the server.');
-  }, 3000); // Sending updates every 3 seconds
-
-  // Listen for the WebSocket close event
-  ws.on('close', () => {
-    console.log('WebSocket client disconnected');
-  });
-});
 
 
 
