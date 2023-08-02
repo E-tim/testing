@@ -3,6 +3,7 @@ const express = require('express');
 const TelegramBot = require('node-telegram-bot-api');
 const axios = require('axios');
 const bodyParser = require('body-parser');
+const WebSocket  = require('ws')
 
 require('dotenv').config();
 const PORT = 4000;
@@ -41,25 +42,34 @@ bot.on('message', async(msg)=> {
 })
 
 
-const serverUrl = 'https://testing-one-coral.vercel.app/'; // Replace with your server URL
+// Create a WebSocket server
+const wss = new WebSocket.Server({ noServer: true });
 
-const refreshServer = () => {
-  axios.get(serverUrl)
-    .then((response) => {
-      console.log(`Refreshed ${serverUrl} at ${new Date().toLocaleString()}`);
-    })
-    .catch((error) => {
-      console.error(`Error refreshing ${serverUrl}:`, error.message);
-    });
-};
+wss.on('connection', (ws) => {
+  console.log('WebSocket client connected');
 
-// Call the refreshServer function every 10 seconds
-const refreshInterval = 3000; // 10 seconds
-setInterval(refreshServer, refreshInterval);
+  // Send real-time updates to the connected WebSocket client
+  setInterval(() => {
+    ws.send('This is a real-time update from the server.');
+  }, 3000); // Sending updates every 3 seconds
+
+  // Listen for the WebSocket close event
+  ws.on('close', () => {
+    console.log('WebSocket client disconnected');
+  });
+});
+
+
 
 // ... Rest of your code for handling commands and callback queries ...
 
-app.listen(process.env.PORT || PORT, async () => {
+const server = app.listen(process.env.PORT || PORT, async () => {
   console.log(`Express server listening on port ${PORT}`);
   // await setupWebhook();
+});
+
+server.on('upgrade', (request, socket, head) => {
+  wss.handleUpgrade(request, socket, head, (ws) => {
+    wss.emit('connection', ws, request);
+  });
 });
