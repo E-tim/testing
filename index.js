@@ -17,6 +17,10 @@ const URI = `/webhook/${TOKEN}`;
 const webhookURL = `${SERVER_URL || 'https://testing-one-coral.vercel.app/'}${URI}`;
 const TELEGRAM_API = `https://api.telegram.org/bot${TOKEN}`;
 
+app.get('/', (req, res)=> {
+  res.send('working')
+})
+
 const bot = new TelegramBot(TOKEN, {polling: true})
 
 const commands = [
