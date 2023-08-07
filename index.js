@@ -24,21 +24,7 @@ app.get('/', (req, res)=> {
 
 const bot = new TelegramBot(TOKEN, {polling: true})
 
-// Create a WebSocket client to connect to the external WebSocket server
-const wss = new WebSocket('ws://localhost:8080/');
 
-// Handle WebSocket client events
-wss.on('open', () => {
-  console.log('WebSocket connection opened');
-});
-
-wss.on('message', (data) => {
-  console.log('Received message from WebSocket server:', data);
-});
-
-wss.on('close', () => {
-  console.log('WebSocket connection closed');
-});
 
 const commands = [
   // [{text: 'Balance', callback_data: 'balance'},{text: 'Add Fund', callback_data: 'add_fund'}],
@@ -57,7 +43,6 @@ bot.on('message', async(msg)=> {
   bot.sendMessage(msg.chat.id, "hello", {reply_markup: keyboard})
 
   // Send real-time updates to the WebSocket server when a new message is received
-  wss.send(JSON.stringify({ type: 'message', data: msg }));
 })
 
 
@@ -67,13 +52,9 @@ bot.on('message', async(msg)=> {
 
 // ... Rest of your code for handling commands and callback queries ...
 
-const server = app.listen(process.env.PORT || PORT, async () => {
+app.listen(process.env.PORT || PORT, async () => {
   console.log(`Express server listening on port ${PORT}`);
   // await setupWebhook();
 });
 
-server.on('upgrade', (request, socket, head) => {
-  wss.handleUpgrade(request, socket, head, (ws) => {
-    wss.emit('connection', ws, request);
-  });
-});
+
