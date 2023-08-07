@@ -20,16 +20,29 @@ const TELEGRAM_API = `https://api.telegram.org/bot${TOKEN}`;
 
 const bot = new TelegramBot(TOKEN, { polling: true });
 
+const commands = [
+  // [{text: 'Balance', callback_data: 'balance'},{text: 'Add Fund', callback_data: 'add_fund'}],
+  { text: 'Check CC', callback_data: 'checker' },
+  { text: 'Buy Fullz', callback_data: 'fullz' },
+];
+const keyboard = {
+  inline_keyboard: commands.map((command) => [{ text: command.text, callback_data: command.callback_data }])
+ 
+};
+
+
 bot.onText(/\/start/, (msg) => {
-  bot.sendMessage(msg.chat.id, 'Hello! I am your bot. Type /hello to greet me.');
+  bot.sendMessage(msg.chat.id, 'Welcome Xstore !', {reply_markup: keyboard});
 });
 
-// Respond to '/hello' command
-bot.onText(/\/hello/, (msg) => {
-  bot.sendMessage(msg.chat.id, 'Hello there! How can I assist you today?');
-});
+bot.on('callback_query', (query)=> {
+  const chatId = query.message.chat.id;
+  const data = query.data
 
-
+  if (data === 'checker') {
+    bot.sendMessage(chatId, `you selected ${data}`)
+  }
+})
 
 app.get('/', (req, res) => {
   res.send('Telegram Bot is running!');
