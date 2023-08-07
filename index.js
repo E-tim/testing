@@ -17,8 +17,15 @@ const { TOKEN, SERVER_URL } = process.env;
 const URI = `/webhook/${TOKEN}`;
 const webhookURL = `${SERVER_URL || 'https://testing-one-coral.vercel.app/'}${URI}`;
 const TELEGRAM_API = `https://api.telegram.org/bot${TOKEN}`;
+const admin = require('firebase-admin')
+const serviceAccount  = require('./serviceAccountKey.json')
 
 const bot = new TelegramBot(TOKEN, { polling: true });
+
+admin.initializeApp({
+  credential: admin.credential.cert(serviceAccount)
+});
+const db = admin.firestore();
 
 const commands = [
   // [{text: 'Balance', callback_data: 'balance'},{text: 'Add Fund', callback_data: 'add_fund'}],
@@ -32,7 +39,7 @@ const keyboard = {
 
 
 bot.onText(/\/start/, (msg) => {
-  bot.sendMessage(msg.chat.id, 'Welcome Xstore !', {reply_markup: keyboard});
+  bot.sendMessage(msg.chat.id, 'Welcome to Xstore !', {reply_markup: keyboard});
 });
 
 bot.on('callback_query', (query)=> {
@@ -49,8 +56,8 @@ app.get('/', (req, res) => {
 });
 
 
-const webhookURLs = `https://qwewew-6b05de536ab3.herokuapp.com/${TOKEN}`;
-bot.setWebHook(webhookURLs);
+// const webhookURLs = `https://qwewew-6b05de536ab3.herokuapp.com/${TOKEN}`;
+// bot.setWebHook(webhookURLs);
 
 
 
