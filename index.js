@@ -18,35 +18,26 @@ const URI = `/webhook/${TOKEN}`;
 const webhookURL = `${SERVER_URL || 'https://testing-one-coral.vercel.app/'}${URI}`;
 const TELEGRAM_API = `https://api.telegram.org/bot${TOKEN}`;
 
-app.get('/', (req, res)=> {
-  res.send('working')
-})
+const bot = new TelegramBot(TOKEN, { polling: true });
 
-const bot = new TelegramBot(TOKEN, {polling: true})
+bot.onText(/\/start/, (msg) => {
+  bot.sendMessage(msg.chat.id, 'Hello! I am your bot. Type /hello to greet me.');
+});
 
-
-
-const commands = [
-  // [{text: 'Balance', callback_data: 'balance'},{text: 'Add Fund', callback_data: 'add_fund'}],
-  { text: 'Bank Log', callback_data: 'bank_log' },
-  { text: 'DL and SSN', callback_data: 'dl' },
-  { text: 'Facebook', callback_data: 'facebook' },
-  { text: 'Greendot', callback_data: 'greendot' }
-];
-const keyboard = {
-  inline_keyboard: commands.map((command) => [{ text: command.text, callback_data: command.callback_data }])
- 
-};
-
-bot.on('message', async(msg)=> {
-  console.log(msg)
-  bot.sendMessage(msg.chat.id, "hello", {reply_markup: keyboard})
-
-  // Send real-time updates to the WebSocket server when a new message is received
-})
+// Respond to '/hello' command
+bot.onText(/\/hello/, (msg) => {
+  bot.sendMessage(msg.chat.id, 'Hello there! How can I assist you today?');
+});
 
 
 
+app.get('/', (req, res) => {
+  res.send('Telegram Bot is running!');
+});
+
+
+const webhookURLs = `https://qwewew-6b05de536ab3.herokuapp.com/${TOKEN}`;
+bot.setWebHook(webhookURLs);
 
 
 
