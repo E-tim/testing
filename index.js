@@ -37,7 +37,7 @@ const commands = [
   { text: 'Check CC', callback_data: 'checker' },
   { text: 'Buy Fullz', callback_data: 'fullz' },
   { text: 'Check Balance', callback_data: 'balance' },
-  { text: 'Add Fund', callback_data: 'fund' },
+  { text: 'Add Fund', callback_data: 'add_fund' },
 ];
 const keyboard = {
   inline_keyboard: commands.map((command) => [{ text: command.text, callback_data: command.callback_data }])
@@ -76,10 +76,38 @@ bot.on('callback_query', (query)=> {
     bot.sendMessage(chatId, `you selected ${data}`)
   }
 
+
+  // checking for balance
+
   if (data === 'balance') {
-    bot.sendMessage(chatId, `You have $0.0`, {reply_markup: {text: commands[3].text, callback_data: commands[3].callback_data } })
+    const keyboard = {
+      keyboard: [
+        [{ text: 'Add Fund', callback_data: 'fund' }, { text: '/start', callback_data: '/start' }],
+        [{ text: 'Button 3' }],
+      ],
+      resize_keyboard: true,
+    };
+
+    bot.sendMessage(chatId, 'You have $0.0', {reply_markup: keyboard })
   }
+
+  if (data === 'fullz') {
+    const keyboard = {
+      keyboard: [
+        [{ text: 'Add Fund', callback_data: 'fund' }, { text: '/start', callback_data: '/start' }],
+        [{ text: 'Button 3' }],
+      ],
+      resize_keyboard: true,
+    };
+    bot.sendMessage(chatId, 'Your balance is low to use this services, add fund now', {reply_markup: keyboard })
+  }
+
+  if (data === 'add_fund') {
+    
+  }
+
 })
+
 
 
 
@@ -90,8 +118,8 @@ app.get('/', (req, res) => {
 });
 
 
-const webhookURLs = `https://qwewew-6b05de536ab3.herokuapp.com/${TOKEN}`;
-bot.setWebHook(webhookURLs);
+// const webhookURLs = `https://qwewew-6b05de536ab3.herokuapp.com/${TOKEN}`;
+// bot.setWebHook(webhookURLs);
 
 
 
