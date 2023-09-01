@@ -4,6 +4,8 @@ const TelegramBot = require('node-telegram-bot-api');
 const axios = require('axios');
 const bodyParser = require('body-parser');
 const WebSocket  = require('ws')
+const { v4: uuidv4 } = require('uuid')
+const uniqueId = uuidv4()
 
 require('dotenv').config();
 const PORT = 4000;
@@ -11,6 +13,9 @@ const PORT = 4000;
 const app = express();
 
 app.use(bodyParser.json());
+
+
+
 
 // Create a new bot instance
 const { TOKEN, SERVER_URL } = process.env;
@@ -31,6 +36,8 @@ const commands = [
   // [{text: 'Balance', callback_data: 'balance'},{text: 'Add Fund', callback_data: 'add_fund'}],
   { text: 'Check CC', callback_data: 'checker' },
   { text: 'Buy Fullz', callback_data: 'fullz' },
+  { text: 'Check Balance', callback_data: 'balance' },
+  { text: 'Add Fund', callback_data: 'fund' },
 ];
 const keyboard = {
   inline_keyboard: commands.map((command) => [{ text: command.text, callback_data: command.callback_data }])
@@ -68,7 +75,15 @@ bot.on('callback_query', (query)=> {
 
     bot.sendMessage(chatId, `you selected ${data}`)
   }
+
+  if (data === 'balance') {
+    bot.sendMessage(chatId, `You have $0.0`, {reply_markup: {text: commands[3].text, callback_data: commands[3].callback_data } })
+  }
 })
+
+
+
+
 
 app.get('/', (req, res) => {
   res.send('Telegram Bot is running!');
