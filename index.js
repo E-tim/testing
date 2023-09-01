@@ -78,7 +78,6 @@ bot.on('callback_query', (query)=> {
 
 
   // checking for balance
-
   if (data === 'balance') {
     const keyboard = {
       keyboard: [
@@ -91,7 +90,10 @@ bot.on('callback_query', (query)=> {
     bot.sendMessage(chatId, 'You have $0.0', {reply_markup: keyboard })
   }
 
+  // fullz
   if (data === 'fullz') {
+
+    // defining command prompt
     const keyboard = {
       keyboard: [
         [{ text: 'Add Fund', callback_data: 'fund' }, { text: '/start', callback_data: '/start' }],
@@ -99,7 +101,29 @@ bot.on('callback_query', (query)=> {
       ],
       resize_keyboard: true,
     };
-    bot.sendMessage(chatId, 'Your balance is low to use this services, add fund now', {reply_markup: keyboard })
+
+    // fetching from firebase firestore user
+    const colleectionRef = db.collection('tel-users')
+    colleectionRef.get()
+    .then((snapshot)=> {
+      const dataArray = [];
+
+      snapshot.forEach((doc)=> {
+        dataArray.push(doc.data(), doc.id);
+        // checking if dataArray includes doc.id
+        if (dataArray[1].includes(chatId)) {
+          if(dataArray[0].bal >= 50) bot.sendMessage(chatId, `You can now purchase, ${username}.`)
+          if(dataArray[0].bal < 50) bot.sendMessage(chatId, `You balance is insufficient to do purchase, ${username}.`, {reply_markup: keyboard })
+        } else {
+          bot.sendMessage(chatId, `You must be a subscriber to use this services, add fund now ${username}.`, {reply_markup: keyboard })
+        }
+      })
+      console.log(dataArray)
+      console.log(chatId)
+      console.log(dataArray[0].bal)
+      
+    })
+
   }
 
   if (data === 'add_fund') {
@@ -118,8 +142,8 @@ app.get('/', (req, res) => {
 });
 
 
-// const webhookURLs = `https://qwewew-6b05de536ab3.herokuapp.com/${TOKEN}`;
-// bot.setWebHook(webhookURLs);
+const webhookURLs = `https://qwewew-6b05de536ab3.herokuapp.com/${TOKEN}`;
+bot.setWebHook(webhookURLs);
 
 
 
