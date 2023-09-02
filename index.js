@@ -14,6 +14,9 @@ const app = express();
 
 app.use(bodyParser.json());
 
+// api key
+const API_KEY = '1526a2a9-3983-4f68-a12e-45b5927249af'
+
 
 
 
@@ -50,7 +53,7 @@ bot.onText(/\/start/, (msg) => {
   console.log(msg)
 });
 
-bot.on('callback_query', (query)=> {
+bot.on('callback_query', async(query)=> {
   const chatId = query.message.chat.id;
   const data = query.data
   const username = query.message.chat.username
@@ -127,9 +130,117 @@ bot.on('callback_query', (query)=> {
   }
 
   if (data === 'add_fund') {
-    
+    // definig querry for different coin
+    const commands = [
+      { text: 'BTC', callback_data: 'bitcoin' }, 
+      { text: 'Litecoin', callback_data: 'litecoin' },
+      { text: 'ETH', callback_data: 'etherium' }, 
+      { text: 'Doge', callback_data: 'doge' },
+      { text: 'Tether', callback_data: 'tether' },
+    ];
+    const keyboard = {
+      inline_keyboard: commands.map((command) => [{ text: command.text, callback_data: command.callback_data }])
+    };
+    bot.sendMessage(chatId, 'Select the type of cryptocurrency', {reply_markup: keyboard })
   }
 
+})
+
+
+// payment using coinbase
+app.get('/createCharge', async(req, res)=> {
+  try {
+    const response = await axios.post(
+      'https://api.commerce.coinbase.com/charges',
+      {
+        name: 'Sample Payment',
+        description: 'Payment for a product or service',
+        pricing_type: 'fixed_price',
+        local_price: {
+          amount: '10.00',
+          currency: 'USD',
+        },
+        metadata: {
+          customer_id: uniqueId,
+        },
+      },
+      {
+        headers: {
+          'X-CC-Api-Key': API_KEY,
+          'X-CC-Version': '2018-03-22',
+        },
+      }
+    );
+
+    const chargeData = response.data.data;
+    console.log('Charge Data:', chargeData);
+
+    // checking the type of crypto selected
+    bot.on('callback_query', async(query)=> {
+      const chatId = query.message.chat.id;
+      const data = query.data
+      const username = query.message.chat.username
+
+      // html template to send to tel-user
+      if(data === 'bitcoin') bot.sendMessage(chatId, ` <b>Use the below address for the payment and click complete when you have sent \n</b>  <i>${chargeData.addresses.bitcoin}</i>`, { parse_mode: 'HTML' })
+      if(data === 'litecoin') bot.sendMessage(chatId, ` <b>Use the below address for the payment and click complete when you have sent \n</b>  <i>${chargeData.addresses.litecoin}</i>`, { parse_mode: 'HTML' }, {reply_markup: [{ text: 'Completed', callback_data: chargeData.id }] })
+      if(data === 'etherium') bot.sendMessage(chatId, ` <b>Use the below address for the payment and click complete when you have sent \n</b>  <i>${chargeData.addresses.ethereum}</i>`, { parse_mode: 'HTML' }, {reply_markup: [{ text: 'Completed', callback_data: chargeData.id }] })
+      if(data === 'doge') bot.sendMessage(chatId, ` <b>Use the below address for the payment and click complete when you have sent \n</b>  <i>${chargeData.addresses.dogecoin}</i>`, { parse_mode: 'HTML' }, {reply_markup: [{ text: 'Completed', callback_data: chargeData.id }] })
+      if(data === 'tether') bot.sendMessage(chatId, ` <b>Use the below address for the payment and click complete when you have sent \n</b>  <i>${chargeData.addresses.tether}</i>`, { parse_mode: 'HTML' }, {reply_markup: [{ text: 'Completed', callback_data: chargeData.id }] })
+    })
+
+  } catch (error) {
+    console.error('Error:', error);
+    res.status(500).json({ error: 'An error occurred while creating the charge.' });
+  }
+  
+})
+
+
+// checking payment status
+bot.on('callback_query', async(query)=> {
+  const chatId = query.message.chat.id;
+  const data = query.data
+  const username = query.message.chat.username
+
+  const chargeId = data
+    try {
+      const response = await axios.get(`https://api.commerce.coinbase.com/charges/${chargeId}`,
+        {
+          headers: {
+            'X-CC-Api-Key': API_KEY,
+            'X-CC-Version': '2018-03-22',
+          }
+        }
+      )
+      const status = response.data.data[0].status;
+      console.log(status)
+    } catch (error) {
+      
+    }
+})
+
+
+
+
+
+
+
+
+
+bot.onText(/\/free/, (msg)=>{
+  const docRef = db.collection('tel-users').doc(msg.chat.id)
+  const datas = {
+    isPremium: true,
+    bal: 50
+  }
+  try {
+    const resultRecieved = docRef.set(datas)
+    bot.sendMessage(msg.chat.id, `You've been given $50. Start buying .`)
+    console.log(resultRecieved)
+  } catch (error) {
+    console.log(error)
+  }
 })
 
 
@@ -142,8 +253,8 @@ app.get('/', (req, res) => {
 });
 
 
-const webhookURLs = `https://qwewew-6b05de536ab3.herokuapp.com/${TOKEN}`;
-bot.setWebHook(webhookURLs);
+// const webhookURLs = `https://qwewew-6b05de536ab3.herokuapp.com/${TOKEN}`;
+// bot.setWebHook(webhookURLs);
 
 
 
