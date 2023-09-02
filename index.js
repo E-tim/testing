@@ -14,19 +14,17 @@ const app = express();
 
 app.use(bodyParser.json());
 
-// api key
-const API_KEY = '1526a2a9-3983-4f68-a12e-45b5927249af'
-
 
 
 
 // Create a new bot instance
-const { TOKEN, SERVER_URL } = process.env;
+const { TOKEN, SERVER_URL, API_KEY } = process.env;
 const URI = `/webhook/${TOKEN}`;
 const webhookURL = `${SERVER_URL || 'https://testing-one-coral.vercel.app/'}${URI}`;
 const TELEGRAM_API = `https://api.telegram.org/bot${TOKEN}`;
 const admin = require('firebase-admin')
 const serviceAccount  = require('./serviceAccountKey.json')
+
 
 const bot = new TelegramBot(TOKEN, { polling: true });
 
@@ -84,7 +82,7 @@ bot.on('callback_query', async(query)=> {
   if (data === 'balance') {
     const keyboard = {
       keyboard: [
-        [{ text: 'Add Fund', callback_data: 'fund' }, { text: '/start', callback_data: '/start' }],
+        [{ text: 'Add Fund', callback_data: 'add_fund' }, { text: '/start', callback_data: '/start' }],
         [{ text: 'Button 3' }],
       ],
       resize_keyboard: true,
@@ -99,7 +97,7 @@ bot.on('callback_query', async(query)=> {
     // defining command prompt
     const keyboard = {
       keyboard: [
-        [{ text: 'Add Fund', callback_data: 'fund' }, { text: '/start', callback_data: '/start' }],
+        [{ text: 'Add Fund', callback_data: 'add_fund' }, { text: '/start', callback_data: '/start' }],
         [{ text: 'Button 3' }],
       ],
       resize_keyboard: true,
@@ -148,7 +146,7 @@ bot.on('callback_query', async(query)=> {
 
 
 // payment using coinbase
-app.get('/createCharge', async(req, res)=> {
+async function createCharge() {
   try {
     const response = await axios.post(
       'https://api.commerce.coinbase.com/charges',
@@ -182,19 +180,67 @@ app.get('/createCharge', async(req, res)=> {
       const username = query.message.chat.username
 
       // html template to send to tel-user
-      if(data === 'bitcoin') bot.sendMessage(chatId, ` <b>Use the below address for the payment and click complete when you have sent \n</b>  <i>${chargeData.addresses.bitcoin}</i>`, { parse_mode: 'HTML' })
-      if(data === 'litecoin') bot.sendMessage(chatId, ` <b>Use the below address for the payment and click complete when you have sent \n</b>  <i>${chargeData.addresses.litecoin}</i>`, { parse_mode: 'HTML' }, {reply_markup: [{ text: 'Completed', callback_data: chargeData.id }] })
-      if(data === 'etherium') bot.sendMessage(chatId, ` <b>Use the below address for the payment and click complete when you have sent \n</b>  <i>${chargeData.addresses.ethereum}</i>`, { parse_mode: 'HTML' }, {reply_markup: [{ text: 'Completed', callback_data: chargeData.id }] })
-      if(data === 'doge') bot.sendMessage(chatId, ` <b>Use the below address for the payment and click complete when you have sent \n</b>  <i>${chargeData.addresses.dogecoin}</i>`, { parse_mode: 'HTML' }, {reply_markup: [{ text: 'Completed', callback_data: chargeData.id }] })
-      if(data === 'tether') bot.sendMessage(chatId, ` <b>Use the below address for the payment and click complete when you have sent \n</b>  <i>${chargeData.addresses.tether}</i>`, { parse_mode: 'HTML' }, {reply_markup: [{ text: 'Completed', callback_data: chargeData.id }] })
+      if(data === 'bitcoin') {
+        const inlineKeyboard = {
+          inline_keyboard: [
+            [{ text: 'Completed', callback_data: chargeData.id }],
+          ],
+        };
+        bot.sendMessage(chatId,
+           ` <b>Use the below address for the payment and click complete when you have sent\n</b> <b>Bitcoin : </b>  <i>${chargeData.addresses.bitcoin}</i>`, 
+           {parse_mode: 'HTML', reply_markup: JSON.stringify(inlineKeyboard) })
+      }
+      if(data === 'litecoin') {
+        const inlineKeyboard = {
+          inline_keyboard: [
+            [{ text: 'Completed', callback_data: chargeData.id }],
+          ],
+        };
+        bot.sendMessage(chatId,
+           ` <b>Use the below address for the payment and click complete when you have sent\n</b> <b>Litecoin : </b>  <i>${chargeData.addresses.litecoin}</i>`, 
+           {parse_mode: 'HTML', reply_markup: JSON.stringify(inlineKeyboard) })
+      }
+      if(data === 'etherium') {
+        const inlineKeyboard = {
+          inline_keyboard: [
+            [{ text: 'Completed', callback_data: chargeData.id }],
+          ],
+        };
+        bot.sendMessage(chatId,
+           ` <b>Use the below address for the payment and click complete when you have sent\n</b> <b>Etherium : </b>  <i>${chargeData.addresses.etherium}</i>`, 
+           {parse_mode: 'HTML', reply_markup: JSON.stringify(inlineKeyboard) })
+      }
+      if(data === 'doge') {
+        const inlineKeyboard = {
+          inline_keyboard: [
+            [{ text: 'Completed', callback_data: chargeData.id }],
+          ],
+        };
+        bot.sendMessage(chatId,
+           ` <b>Use the below address for the payment and click complete when you have sent\n</b> <b>Doge : </b>  <i>${chargeData.addresses.dogecoin}</i>`, 
+           {parse_mode: 'HTML', reply_markup: JSON.stringify(inlineKeyboard) })
+      }
+      if(data === 'tether') {
+        const inlineKeyboard = {
+          inline_keyboard: [
+            [{ text: 'Completed', callback_data: chargeData.id }],
+          ],
+        };
+        bot.sendMessage(chatId,
+           ` <b>Use the below address for the payment and click complete when you have sent\n</b> <b>Tether : </b>  <i>${chargeData.addresses.tether}</i>`, 
+           {parse_mode: 'HTML', reply_markup: JSON.stringify(inlineKeyboard) })
+      }
     })
 
   } catch (error) {
     console.error('Error:', error);
-    res.status(500).json({ error: 'An error occurred while creating the charge.' });
+    response.status(500).json({ error: 'An error occurred while creating the charge.' });
   }
-  
-})
+}
+
+createCharge();
+
+
 
 
 // checking payment status
