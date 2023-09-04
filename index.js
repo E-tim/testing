@@ -104,7 +104,7 @@ const keyboard = {
 
 bot.onText(/\/start/, (msg) => {
   bot.sendMessage(msg.chat.id, 
-                  `<b>Welcome to Xstore ! \n</b><i>To use any of our service, You must have atleast $35 in your account. Use ADD FUND command to pay</i>`,
+                  `<b>Welcome to Chocolate Bot ! \n</b><i>To use any of our service, You must have atleast $35 in your account. Use ADD FUND command to pay</i>`,
                      {parse_mode: 'HTML',reply_markup: keyboard});
   console.log(msg)
 });
@@ -153,7 +153,7 @@ bot.on('callback_query', async(query)=> {
     // defining command prompt
     const commands = [
       // [{text: 'Balance', callback_data: 'balance'},{text: 'Add Fund', callback_data: 'add_fund'}],
-      { text: 'Credit Card', callback_data: 'cc' },
+      { text: ' UK Credit Card', callback_data: 'cc' },
       { text: 'SSN', callback_data: 'ssn' },
       { text: 'Bank Log', callback_data: 'banklog' },
     ];
@@ -162,7 +162,28 @@ bot.on('callback_query', async(query)=> {
      
     };
     
-    bot.sendMessage(chatId, `You can now purchase, ${username}.`, {reply_markup: fullsKeyboard})
+
+    // fetching from firebase firestore user
+    const colleectionRef = db.collection('tel-users')
+    colleectionRef.get()
+    .then((snapshot)=> {
+      const dataArray = [];
+
+      snapshot.forEach((doc)=> {
+        dataArray.push(doc.data(), doc.id);
+        // checking if dataArray includes doc.id
+        if (dataArray[1].includes(chatId)) {
+          if(dataArray[0].bal >= 50) bot.sendMessage(chatId, `You can now purchase, ${username}.`, {reply_markup: fullsKeyboard})
+          if(dataArray[0].bal < 50) bot.sendMessage(chatId, `You balance is insufficient to do purchase, ${username}.`, {reply_markup: keyboard })
+        } else {
+          bot.sendMessage(chatId, `You must be a subscriber to use this services, add fund now ${username}. Add fund`, {reply_markup: keyboard })
+        }
+      })
+      console.log(dataArray)
+      console.log(chatId)
+      console.log(dataArray[0].bal)
+      
+    })
 
   }
 
@@ -341,8 +362,8 @@ app.get('/', (req, res) => {
 });
 
 
-const webhookURLs = `https://qwewew-6b05de536ab3.herokuapp.com/${TOKEN}`;
-bot.setWebHook(webhookURLs);
+// const webhookURLs = `https://qwewew-6b05de536ab3.herokuapp.com/${TOKEN}`;
+// bot.setWebHook(webhookURLs);
 
 
 
