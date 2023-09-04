@@ -1,0 +1,752 @@
+
+Name : Katelyn Schaefer 
+Adress : 109 W Business 83 Hwy #TRLR 168W 
+City : Donna 
+State : TX 
+Zip : 78537 
+SSN : 451-66-8412 
+DOB : 04/29/1951
+
+Name : Ryder Keith 
+Adress : 324 Cumberland Dr 
+City : Harrogate 
+State : TN 
+Zip : 37752 
+SSN : 408-66-4754 
+DOB : 10/03/1951
+
+Name : Rylee Underwood 
+Adress : 365 Gobbler Dr 
+City : Holladay 
+State : TN 
+Zip : 38341 
+SSN : 414-88-7492 
+DOB : 07/12/1951
+
+Name : Kyla Nielsen 
+Adress : 3525 Augustus Dr 
+City : Aiken 
+State : SC 
+Zip : 29801 
+SSN : 657-05-0018 
+DOB : 01/16/1951
+
+Credit Card Number : 5527200174355106
+Expiry Date : 0723
+CVV : 558
+Name : Shamar Anderson
+Street Adress : 3940 Landis Rd
+City : Collegeville
+State : PA
+Zip : 19426
+Country : USA
+SSN : 042-16-9381
+DOB : 02/08/1952
+
+Credit Card Number : 4310364548665865
+Expiry Date : 0923
+CVV : 204
+Name : Devin Robles
+Street Adress : 1127 Darczuk Dr
+City : Bethel
+State : PA
+Zip : 19507 A RR 1
+Country : United States
+SSN : 451-33-2816
+DOB : 02/17/1952
+
+Name : Alden Parrish 
+Adress : Po Box 27 
+City : Madison 
+State : PA 
+Zip : 15663 
+SSN : 179-64-5365 
+DOB : 06/22/1952
+
+Name : Miah Rodgers 
+Adress : 1100 S Adams St 
+City : Carthage 
+State : TX 
+Zip : 75633 
+SSN : 637-19-6631 
+DOB : 01/14/1952
+
+Name : Noah Foley 
+Adress : 1020 Pinecrest St 
+City : Vidor 
+State : TX 
+Zip : 77662 
+SSN : 450-07-7489 
+DOB : 06/17/1952
+
+Name : Sarahi Wise 
+Adress : 516 Broadway 
+City : Turbotville 
+State : PA 
+Zip : 17772 
+SSN : 188-38-0862 
+DOB : 10/05/1953
+
+Credit Card Number : 5229257806537122
+Expiry Date : 0522
+CVV : 856
+Name : Alaina Harmon
+Street Adress : 7460 Saxony Dr
+City : West Chester
+State : OH
+Zip : 45069
+Country : USA
+SSN : 442-70-1007
+DOB : 10/19/1953
+
+Credit Card Number : 4845568443348930
+Expiry Date : 0622
+CVV : 708
+Name : Sarah Ellison
+Street Adress : 2600 Waterview Pky #3823
+City : Richardson
+State : TX
+Zip : 75080
+Country : United States
+SSN : 392-19-3606
+DOB : 05/31/1953
+
+Name : Brent Cantrell 
+Adress : 1401 Mayberry Ln 
+City : Franklin 
+State : TN 
+Zip : 37064 
+SSN : 415-91-4310 
+DOB : 02/20/1953
+
+Name : Mark Marks 
+Adress : 1946 Twin Bridge Rd 
+City : Deer Lodge 
+State : TN 
+Zip : 37726 
+SSN : 758-09-9926 
+DOB : 11/04/1953
+
+Name : Emmanuel Clark 
+Adress : 137 Raspberry Dr 
+City : New Market 
+State : TN 
+Zip : 37820 
+SSN : 759-09-5732 
+DOB : 07/30/1953
+
+Name : Brent Cantrell 
+Adress : 1401 Mayberry Ln 
+City : Franklin 
+State : TN 
+Zip : 37064 
+SSN : 415-91-4310 
+DOB : 02/20/1953
+
+Name : Kathryn Day 
+Adress : 4985 Millersburg Rd 
+City : Bell Buckle 
+State : TN 
+Zip : 37020 
+SSN : 762-10-7986 
+DOB : 04/13/1953
+
+Name : Ezequiel Williamson 
+Adress : 124 Lupine Cir 
+City : Norway 
+State : SC 
+Zip : 29113 
+SSN : 655-12-2387 
+DOB : 04/02/1953
+
+Name : Augustus Suarez 
+Adress : 436 Cedar Rd 
+City : Windsor 
+State : SC 
+Zip : 29856 
+SSN : 249-46-8131 
+DOB : 04/19/1953
+
+Name : Asher Ortiz 
+Adress : 10265 221st Hwy S 
+City : Waterloo 
+State : SC 
+Zip : 29384 
+SSN : 656-14-6700 
+DOB : 11/26/1953
+
+Name : Gloria Benton 
+Adress : 653 Blue Mountain Rd 
+City : Fredericksburg 
+State : PA 
+Zip : 17026 
+SSN : 201-60-3465 
+DOB : 08/10/1954
+
+Name : Nathaniel Lambert 
+Adress : 710 Kennedy Rd 
+City : North Wales 
+State : PA 
+Zip : 19455 
+SSN : 160-22-4954 
+DOB : 11/10/1954
+
+Name : Sarahi Richmond 
+Adress : 911 County 488 Rd 
+City : Ranger 
+State : TX 
+Zip : 76470 
+SSN : 643-72-6624 
+DOB : 05/20/1954
+
+Name : Allisson Banks 
+Adress : 532 Mustang Ct 
+City : Lavon 
+State : TX 
+Zip : 75166 
+SSN : 465-59-8746 
+DOB : 10/07/1954
+
+Name : Maximillian Odom 
+Adress : 5401 Dock Ridge Rd 
+City : Galivants Ferry 
+State : SC 
+Zip : 29544 
+SSN : 657-09-4279 
+DOB : 12/18/1954
+
+Name : Leonard Kennedy 
+Adress : 360 Churchview Loop 
+City : Lexington 
+State : SC 
+Zip :
+SSN : 658-30-7632 
+DOB : 06/17/1954
+
+Credit Card Number : 5247409987503823
+Expiry Date : 0823
+CVV : 323
+Name : Lilly Deleon
+Street Adress : 6084 Rr 1
+City : Canton
+State : PA
+Zip : 17724
+Country : USA
+SSN : 502-14-6161
+DOB : 07/20/1955
+
+Name : Elian Singh 
+Adress : Lake 
+City : Pleasant Mount 
+State : PA 
+Zip : 18453 
+SSN : 191-82-4721 
+DOB : 04/04/1955
+
+Name : Ashlyn Atkinson 
+Adress : 1302 Warren Ave 
+City : Williamsport 
+State : PA 
+Zip : 17701 
+SSN : 176-56-6377 
+DOB : 07/05/1955
+
+Credit Card Number : 4254846144801793
+Expiry Date : 0924
+CVV : 118
+Name : Tatum Estrada
+Street Adress : 484 Alameda Ave
+City : Youngstown
+State : OH
+Zip : 44504
+Country : United States
+SSN : 428-55-2744
+DOB : 07/04/1955
+
+Name : Fatima Mcdonald 
+Adress : 13800 Cookeville Boatdock Rd 
+City : Baxter 
+State : TN 
+Zip : 38544 
+SSN : 415-27-2366 
+DOB : 08/10/1955
+
+Name : Jermaine Sexton 
+Adress : 479 Clayton Howard Rd 
+City : Wartburg 
+State : TN 
+Zip : 37887 
+SSN : 757-07-9598 
+DOB : 06/01/1955
+
+Name : Jayson Dixon 
+Adress : 15282 Scott Hwy 
+City : Helenwood 
+State : TN 
+Zip : 37755 
+SSN : 411-78-9220 
+DOB : 09/05/1955
+
+Name : Jadyn Beck 
+Adress : 1416 Falls Church Rd 
+City : Raleigh 
+State : NC 
+Zip : 27609 
+SSN : 689-18-0205 
+DOB : 09/17/1955
+
+Name : Lara Bryant 
+Adress : 105 Azalea Ct 
+City : Kitty Hawk 
+State : NC 
+Zip : 27949 
+SSN : 681-12-1150 
+DOB : 05/11/1955
+
+Name : Katie Chung 
+Adress : 120 Arrow Wood Rd 
+City : Banner Elk 
+State : NC 
+Zip : 28604 
+SSN : 688-07-6562 
+DOB : 06/28/1955
+
+Name : Kaya Ramirez 
+Adress : 8063 Kelsey Rd 
+City : Batavia 
+State : NY 
+Zip : 14020 
+SSN : 058-68-7433 
+DOB : 05/14/1955
+
+Name : Mayra Hines 
+Adress : 32 Fairmount Ave 
+City : Hackensack 
+State : NJ 
+Zip : 07601  
+SSN : 158-28-5418 
+DOB : 10/22/1954
+
+Name : Nick Mora 
+Adress : 205 3rd St 
+City : Ridgefield Park 
+State : NJ 
+Zip : 07660 
+SSN : 143-26-4222 
+DOB : 10/17/1953
+
+Credit Card Number : 5497600666609967
+Expiry Date : 0723
+CVV : 547
+Name : Lacey Henry
+Street Adress : 2300 Catherine St
+City : Cortlandt Manor
+State : NY
+Zip : 10567
+Country : USA
+SSN : 459-84-8889
+DOB : 06/08/1953
+
+Name : Tyrell Hester 
+Adress : 3267 State 80 Rte 
+City : Fort Plain 
+State : NY 
+Zip : 13339 
+SSN : 052-52-2222 
+DOB : 02/16/1953
+
+Name : Willow Berg 
+Adress : 4 Moss Dr 
+City : Brewster 
+State : NY 
+Zip : 10509 
+SSN : 082-22-6152 
+DOB : 03/16/1953
+
+Name : Lincoln Bradshaw 
+Adress : 2710 Langston Dr #APT F63 
+City : Goldsboro 
+State : NC 
+Zip : 27534 
+SSN : 238-33-3415 
+DOB : 07/26/1952
+
+Name : Ruby Stafford 
+Adress : 406 Sinclair St 
+City : Lumberton 
+State : NC 
+Zip : 28358 
+SSN : 238-62-7843 
+DOB : 07/09/1951
+
+Name : Damien Spencer 
+Adress : 6597 Wayah Rd 
+City : Franklin 
+State : NC 
+Zip : 28734 
+SSN : 685-09-7087 
+DOB : 05/25/1950
+
+Name : Bridget Fritz 
+Adress : 1015 Cleveland Ave 
+City : Kings Mountain 
+State : NC 
+Zip : 28086 
+SSN : 688-12-5267 
+DOB : 01/02/1950
+
+Name : Lola Jefferson 
+Adress : 905 N Liberty St 
+City : Nicholls 
+State : GA 
+Zip : 31554 
+SSN : 257-68-6215 
+DOB : 09/01/1950
+
+Name : Brittany Everett 
+Adress : 136 Main St 
+City : Milner 
+State : GA 
+Zip : 30257 
+SSN : 255-99-3904 
+DOB : 06/14/1950
+
+Credit Card Number : 5478510075294751
+Expiry Date : 0424
+CVV : 766
+Name : Brice Mcfarland
+Street Adress : 267 Lynn Dr
+City : Saint Marys
+State : GA
+Zip : 31558
+Country : USA
+SSN : 148-44-9917
+DOB : 10/02/1950
+
+Credit Card Number : 5594513421494397
+Expiry Date : 1223
+CVV : 400
+Name : Orlando Potts
+Street Adress : 3880 Cooks Hill Rd
+City : Morgantown
+State : IN
+Zip : 46160
+Country : USA
+SSN : 217-08-7869
+DOB : 07/22/1950
+
+Name : Skyla Hendricks 
+Adress : 702 Lasalle Blvd 
+City : Pekin 
+State : IL 
+Zip : 61554 
+SSN : 349-10-5646 
+DOB : 06/29/1950
+
+Name : Jayden Mays 
+Adress : 133 Bolz Rd 
+City : Carpentersville 
+State : IL 
+Zip : 60110  
+SSN : 343-74-1761 
+DOB : 10/07/1950
+
+Name : Kinsley Le 
+Adress : 689 Margies Ln 
+City : Broxton 
+State : GA 
+Zip : 31519 
+SSN : 256-66-6522 
+DOB : 10/07/1951
+
+Name : Skyla Hendricks 
+Adress : 702 Lasalle Blvd 
+City : Pekin 
+State : IL 
+Zip : 61554 
+SSN : 349-10-5646 
+DOB : 06/29/1950
+
+Name : Lucille Wilkins 
+Adress : 258 Millertown Rd 
+City : Temple 
+State : GA 
+Zip : 30179 
+SSN : 258-47-0639 
+DOB : 03/19/1951
+
+Name : Leandro Durham 
+Adress : 370 W Main St 
+City : Peru 
+State : IN 
+Zip : 46970 
+SSN : 304-37-2325 
+DOB : 04/11/1951
+
+Name : Eduardo Schneider 
+Adress : 1508 Elizabeth Ave 
+City : North Chicago 
+State : IL 
+Zip : 60064 
+SSN : 340-44-0817 
+DOB : 10/13/1951
+
+Name : Adison Dickerson 
+Adress : 520 Greeson Rd NE 
+City : Resaca 
+State : GA 
+Zip : 30735 
+SSN : 670-24-0425 
+DOB : 08/11/1952
+
+Name : Paula Chase 
+Adress : 20 Pine Valley Dr 
+City : Athens 
+State : GA 
+Zip : 30606 
+SSN : 259-78-7663 
+DOB : 11/03/1954
+
+Credit Card Number : 5566441763846806
+Expiry Date : 0624
+CVV : 480
+Name : Chase Johnson
+Street Adress : 9583 W Quarter Moon Dr
+City : Pendleton
+State : IN
+Zip : 46064
+Country : USA
+SSN : 478-76-2626
+DOB : 10/21/1954
+
+Name : Bo Norris 
+Adress : 908 Berwick Dr #APT 7 
+City : Champaign 
+State : IL 
+Zip : 61822 
+SSN : 329-16-6498 
+DOB : 08/29/1954
+
+Name : Carl Gentry 
+Adress : 195 Faceville Atta Rd 
+City : Attapulgus 
+State : GA 
+Zip : 39815 
+SSN : 667-07-8197 
+DOB : 02/17/1955
+
+Name : Alisha York 
+Adress : 2-S471 Lloyd Ave 
+City : Lombard 
+State : IL 
+Zip : 60148  
+SSN : 347-96-6299 
+DOB : 03/30/1955
+
+Name : Annabel Friedman 
+Adress : 7700 W Altgeld St #12 
+City : Elmwood Park 
+State : IL 
+Zip : 60707 
+SSN : 318-82-1436 
+DOB : 12/10/1955
+
+Name : Esmeralda Dennis 
+Adress : 10 Brompton Dr 
+City : Bella Vista 
+State : AR 
+Zip : 72714  
+SSN :  626-69-5684 
+DOB :  01/10/1955 
+
+Name : Joselyn Wilson 
+Adress : 421 Hillside Dr 
+City : Boulder Creek 
+State : CA 
+Zip : 95006 
+SSN :  570-13-1977 
+DOB :  09/28/1955 
+
+Name : Marquis Hardin
+Adress :6920 58th St
+City :Pinellas Park
+State :FL
+Zip :33781 
+SSN : 589-70-4289
+DOB : 06/13/1955
+
+Credit Card Number : 4593358723014616
+Expiry Date : 0223
+CVV : 883
+Name : Jamarion Perkins
+Street Adress : 12370 Eagles Nest Dr
+City : Bokeelia
+State : FL
+Zip : 33922
+Country : United States
+SSN : 651-01-9480
+DOB : 05/26/1955
+
+Name : Tyrell Holloway 
+Adress : 4900 Ford St 
+City : Lake Isabella 
+State : CA 
+Zip : 93240 
+SSN :  557-74-7732 
+DOB :  01/20/1954
+
+Name : Maritza Oneal 
+Adress : 1761 Sunningdale Rd 
+City : Seal Beach 
+State : CA 
+Zip : 90740 
+SSN :  617-56-3263 
+DOB :  02/07/1954
+
+NAME: Betty Sue Scott
+ADDRESS: Po Box 570
+Naco, Arizona(AZ), 85620
+PHONE: (440) 934-4619
+SSN: 419-76-9232
+419-76-9232 was issued in ARIZONA (AZ) between 1969 and 2011.
+DOB: 02/11/1954
+DL: L5481100
+
+Name : Rhys Jacobson 
+Adress : 245 Shiloh Rd 
+City : Hazel Green 
+State : AL 
+Zip : 35750 
+SSN : 417-37-8638 
+DOB : 12/16/1954
+
+Name : Naomi Richard 
+Adress : 409 W Pine St 
+City : Dermott 
+State : AR 
+Zip : 71638  
+SSN :  558-78-7660 
+DOB :  05/18/1953
+
+Name : Zara Buckley 
+Adress : 708 Tupelo Pike 
+City : Scottsboro 
+State : AL 
+Zip : 35768 
+SSN : 417-61-0367 
+DOB : 01/28/1953
+
+Name : Sarahi Guerra 
+Adress : 241 W Buford St 
+City : Forrest City 
+State : AR 
+Zip : 72335  
+SSN :  564-79-5683 
+DOB :  06/03/1952 
+
+Name : Orlando Gomez 
+Adress : 335 5th Ave 
+City : Venice 
+State : CA 
+Zip : 90291 
+SSN :  569-77-4441 
+DOB :  11/17/1951
+
+Name : Keon Whitney 
+Adress : 100 S Venice Blvd 
+City : Venice 
+State : CA 
+Zip : 90291 
+SSN :  566-67-6998 
+DOB :  04/15/1951
+
+Name : Israel Pratt 
+Adress : 130 Gum Ave 
+City : Forrest City 
+State : AR 
+Zip : 72335  
+SSN :  545-94-0798 
+DOB :  03/08/1951 
+
+Name : Andy Evans
+Adress :17311 NW 47th Ave
+City :Opa Locka
+State :FL
+Zip :33055 
+SSN : 591-89-5297
+DOB : 06/06/1951
+
+Credit Card Number : 5442554592429402
+Expiry Date : 0622
+CVV : 101
+Name : Leonidas Edwards
+Street Adress : 90 Lambert Dr
+City : Stratford
+State : CT
+Zip : 06614
+Country : USA
+SSN : 359-44-5965
+DOB : 06/11/1951
+
+Name : Jaycee Patrick 
+Adress : 205 Portis St 
+City : Lepanto 
+State : AR 
+Zip : 72354  
+SSN :  567-30-4704 
+DOB :  05/27/1950 
+
+Name : Kyla Norman 
+Adress : 3426 Hall Ct 
+City : Lake Isabella 
+State : CA 
+Zip : 93240 
+SSN :  604-69-0926 
+DOB :  07/14/1950 
+
+Credit Card Number : 5179547853082125
+Expiry Date : 0223
+CVV : 677
+Name : Tristian Woodard
+Street Adress : 306 W Cleveland St #B2
+City : Prairie Grove
+State : AR
+Zip : 72753
+Country : USA
+SSN : 515-17-8563
+DOB : 07/21/1950
+
+Name : Aidyn Trujillo 
+Adress : 7684 Twin Beech Rd 
+City : Fairhope 
+State : AL 
+Zip : 36532 
+SSN : 419-09-6677 
+DOB : 08/16/1950
+
+Name : Jamarion Cohen
+Adress :813 Circle Dr
+City :Quincy
+State :FL
+Zip :32351 
+SSN : 265-76-1706
+DOB : 01/02/1950
+
+Name: ANITA GIENAU 
+SSN: 041-38-1429 
+DOB: 1945-11-23 
+Address1: 1 CUTLER ST APT D 
+City: STONINGTON 
+State: CT
+Zip: 63781
+Job: Salt Marsh Opera
+Address: 65 Cutler St, Stonington, CT 06378, United States
+Phone: +1 860-535-0753
+DL: 02458510012
+EXP: 11.23.2024
+
+
+
+
+https://t.me/vPwndCom
+https://t.me/vPwnd
