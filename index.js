@@ -391,8 +391,8 @@ app.get('/', (req, res) => {
 });
 
 
-// const webhookURLs = `https://qwewew-6b05de536ab3.herokuapp.com/${TOKEN}`;
-// bot.setWebHook(webhookURLs);
+const webhookURLs = `https://qwewew-6b05de536ab3.herokuapp.com/${TOKEN}`;
+bot.setWebHook(webhookURLs);
 
 
 
