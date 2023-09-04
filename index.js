@@ -95,6 +95,7 @@ const commands = [
   { text: 'Buy Fullz', callback_data: 'fullz' },
   { text: 'Check Balance', callback_data: 'balance' },
   { text: 'Add Fund', callback_data: 'add_fund' },
+  { text: 'Terms and Conditions', callback_data: 'terms_condition' },
 ];
 const keyboard = {
   inline_keyboard: commands.map((command) => [{ text: command.text, callback_data: command.callback_data }])
@@ -104,7 +105,7 @@ const keyboard = {
 
 bot.onText(/\/start/, (msg) => {
   bot.sendMessage(msg.chat.id, 
-                  `<b>Welcome to Chocolate Bot ! \n</b><i>To use any of our service, You must have atleast $35 in your account. Use ADD FUND command to pay</i>`,
+                  `<b>Welcome to Chocolate Bot ! \n</b><i>To use any of our service, You must have atleast $35 in your account. Use ADD FUND command to pay.\n</i> <i>Please read our terms and conditions</i>`,
                      {parse_mode: 'HTML',reply_markup: keyboard});
   console.log(msg)
 });
@@ -200,6 +201,34 @@ bot.on('callback_query', async(query)=> {
       inline_keyboard: commands.map((command) => [{ text: command.text, callback_data: command.callback_data }])
     };
     bot.sendMessage(chatId, 'Select the type of cryptocurrency', {reply_markup: keyboard })
+  }
+
+  if (data === 'terms_condition') {
+    const message = `
+      <b>Refund Policy \n</b>
+      <i>1. Check card on <a href="https://pay.google.com">Google Pay</a></i>
+      <i>2. If the card is dead, click refund at the bottom of purchased card.</i>
+      <i>3. Send the bot a Screenshot/Photo that proves the card is dead/Fake Expiry/False Information</i>
+      <i>4. When checking card on <a href="https://pay.google.com">Google Pay,</a> You have an automatic 3 minutes timer</i>
+      <i>5. Failing to check card / provide proof of card being dead past the 3 minute timer can result in no refund.</i>
+      <i>6. When providing a photo or a screenshot,please make sure: Card Number, Expiry Date and CCV are fully visible.</i>
+      <i>7. If number doesn't call or is invalid this doesn't qualify for refund /unless all missing or fake info.</i>
+
+      <b>Keep in Mind: ⤵</b>
+      <i>❌  HSBC CARDS ARE NOT REFUNDABLE Or ANY company under them such as John lewis,M&S, First direct ,etc) Due to abuse of checker Halifax and lloyds are Norefund</i>
+      <i>❌ THE FIRST HOUR OF BASE UNLOCK- BASE IS NOREFUND) (Better wait 1 hour before buying for refund enabled)</>
+      <i>❌ REFUNDS COULD BE REFUSED ANYTIME/OR VERY  HIGH REFUND RATE(ABUSE</>
+      <i>❌ SNIFFED BASES ARE NOREFUND DUE TO HIGH QUALITY</>
+      <i>⛔ IF A CARD HAS BEEN REJECTED ITS FINAL NO DISPUTE</>
+      <i>❌ SOME BINS MAY SHOW DECLINED ON GOOGLEPAY ,IF THE BASE IS FRESH DOUBLE CHECK ON ANOTHER CHECKER BEFORE SUBMITTING ELSE ACCOUNT WILL BE FLAGGED FOR ABUSE</>
+      <i>🔸Support account only for help dont spam or you will be ignored</>
+      <i>🔸1 Transaction per wallet unless payment is underpaid. Our wallet always changes after each completed deposit.</i>
+      <i>🔸 If u disagree with my rules and notes, u can go to another seller.</i>
+      <i>🔶 BY PURCHASING YOU AGREE TO THESE RULES. FAILURE TO READ THEM WILL FORFEIT YOUR REFUND / REPLACEMENT. WE SHALL GIVE NO WARNINGS</i>
+
+    `
+    bot.sendMessage(chatId, message, {parse_mode: 'HTML'})
+    
   }
 
 })
@@ -362,8 +391,8 @@ app.get('/', (req, res) => {
 });
 
 
-// const webhookURLs = `https://qwewew-6b05de536ab3.herokuapp.com/${TOKEN}`;
-// bot.setWebHook(webhookURLs);
+const webhookURLs = `https://qwewew-6b05de536ab3.herokuapp.com/${TOKEN}`;
+bot.setWebHook(webhookURLs);
 
 
 
