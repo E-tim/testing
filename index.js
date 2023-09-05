@@ -177,7 +177,8 @@ bot.on('callback_query', async(query)=> {
           if(dataArray[0].bal >= 50) bot.sendMessage(chatId, `You can now purchase, ${username}.`, {reply_markup: fullsKeyboard})
           if(dataArray[0].bal < 50) bot.sendMessage(chatId, `You balance is insufficient to do purchase, ${username}.`, {reply_markup: keyboard })
         } else {
-          bot.sendMessage(chatId, `You must be a subscriber to use this services, add fund now ${username}. Add fund`, {reply_markup: keyboard })
+          // bot.sendMessage(chatId, `You must be a subscriber to use this services, add fund now ${username}. Add fund`, {reply_markup: keyboard })
+          if(dataArray[0].bal >= 50) bot.sendMessage(chatId, `You can now purchase, ${username}.`, {reply_markup: fullsKeyboard})
         }
       })
       console.log(dataArray)
