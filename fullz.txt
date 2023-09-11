@@ -31,30 +31,6 @@ Zip : 29801
 SSN : 657-05-0018 
 DOB : 01/16/1951
 
-Credit Card Number : 5527200174355106
-Expiry Date : 0723
-CVV : 558
-Name : Shamar Anderson
-Street Adress : 3940 Landis Rd
-City : Collegeville
-State : PA
-Zip : 19426
-Country : USA
-SSN : 042-16-9381
-DOB : 02/08/1952
-
-Credit Card Number : 4310364548665865
-Expiry Date : 0923
-CVV : 204
-Name : Devin Robles
-Street Adress : 1127 Darczuk Dr
-City : Bethel
-State : PA
-Zip : 19507 A RR 1
-Country : United States
-SSN : 451-33-2816
-DOB : 02/17/1952
-
 Name : Alden Parrish 
 Adress : Po Box 27 
 City : Madison 
@@ -86,30 +62,6 @@ State : PA
 Zip : 17772 
 SSN : 188-38-0862 
 DOB : 10/05/1953
-
-Credit Card Number : 5229257806537122
-Expiry Date : 0522
-CVV : 856
-Name : Alaina Harmon
-Street Adress : 7460 Saxony Dr
-City : West Chester
-State : OH
-Zip : 45069
-Country : USA
-SSN : 442-70-1007
-DOB : 10/19/1953
-
-Credit Card Number : 4845568443348930
-Expiry Date : 0622
-CVV : 708
-Name : Sarah Ellison
-Street Adress : 2600 Waterview Pky #3823
-City : Richardson
-State : TX
-Zip : 75080
-Country : United States
-SSN : 392-19-3606
-DOB : 05/31/1953
 
 Name : Brent Cantrell 
 Adress : 1401 Mayberry Ln 
@@ -223,18 +175,6 @@ Zip :
 SSN : 658-30-7632 
 DOB : 06/17/1954
 
-Credit Card Number : 5247409987503823
-Expiry Date : 0823
-CVV : 323
-Name : Lilly Deleon
-Street Adress : 6084 Rr 1
-City : Canton
-State : PA
-Zip : 17724
-Country : USA
-SSN : 502-14-6161
-DOB : 07/20/1955
-
 Name : Elian Singh 
 Adress : Lake 
 City : Pleasant Mount 
@@ -250,18 +190,6 @@ State : PA
 Zip : 17701 
 SSN : 176-56-6377 
 DOB : 07/05/1955
-
-Credit Card Number : 4254846144801793
-Expiry Date : 0924
-CVV : 118
-Name : Tatum Estrada
-Street Adress : 484 Alameda Ave
-City : Youngstown
-State : OH
-Zip : 44504
-Country : United States
-SSN : 428-55-2744
-DOB : 07/04/1955
 
 Name : Fatima Mcdonald 
 Adress : 13800 Cookeville Boatdock Rd 
@@ -335,18 +263,6 @@ Zip : 07660
 SSN : 143-26-4222 
 DOB : 10/17/1953
 
-Credit Card Number : 5497600666609967
-Expiry Date : 0723
-CVV : 547
-Name : Lacey Henry
-Street Adress : 2300 Catherine St
-City : Cortlandt Manor
-State : NY
-Zip : 10567
-Country : USA
-SSN : 459-84-8889
-DOB : 06/08/1953
-
 Name : Tyrell Hester 
 Adress : 3267 State 80 Rte 
 City : Fort Plain 
@@ -410,30 +326,6 @@ State : GA
 Zip : 30257 
 SSN : 255-99-3904 
 DOB : 06/14/1950
-
-Credit Card Number : 5478510075294751
-Expiry Date : 0424
-CVV : 766
-Name : Brice Mcfarland
-Street Adress : 267 Lynn Dr
-City : Saint Marys
-State : GA
-Zip : 31558
-Country : USA
-SSN : 148-44-9917
-DOB : 10/02/1950
-
-Credit Card Number : 5594513421494397
-Expiry Date : 1223
-CVV : 400
-Name : Orlando Potts
-Street Adress : 3880 Cooks Hill Rd
-City : Morgantown
-State : IN
-Zip : 46160
-Country : USA
-SSN : 217-08-7869
-DOB : 07/22/1950
 
 Name : Skyla Hendricks 
 Adress : 702 Lasalle Blvd 
@@ -507,18 +399,6 @@ Zip : 30606
 SSN : 259-78-7663 
 DOB : 11/03/1954
 
-Credit Card Number : 5566441763846806
-Expiry Date : 0624
-CVV : 480
-Name : Chase Johnson
-Street Adress : 9583 W Quarter Moon Dr
-City : Pendleton
-State : IN
-Zip : 46064
-Country : USA
-SSN : 478-76-2626
-DOB : 10/21/1954
-
 Name : Bo Norris 
 Adress : 908 Berwick Dr #APT 7 
 City : Champaign 
@@ -575,18 +455,6 @@ Zip :33781
 SSN : 589-70-4289
 DOB : 06/13/1955
 
-Credit Card Number : 4593358723014616
-Expiry Date : 0223
-CVV : 883
-Name : Jamarion Perkins
-Street Adress : 12370 Eagles Nest Dr
-City : Bokeelia
-State : FL
-Zip : 33922
-Country : United States
-SSN : 651-01-9480
-DOB : 05/26/1955
-
 Name : Tyrell Holloway 
 Adress : 4900 Ford St 
 City : Lake Isabella 
@@ -602,15 +470,6 @@ State : CA
 Zip : 90740 
 SSN :  617-56-3263 
 DOB :  02/07/1954
-
-NAME: Betty Sue Scott
-ADDRESS: Po Box 570
-Naco, Arizona(AZ), 85620
-PHONE: (440) 934-4619
-SSN: 419-76-9232
-419-76-9232 was issued in ARIZONA (AZ) between 1969 and 2011.
-DOB: 02/11/1954
-DL: L5481100
 
 Name : Rhys Jacobson 
 Adress : 245 Shiloh Rd 
@@ -676,18 +535,6 @@ Zip :33055
 SSN : 591-89-5297
 DOB : 06/06/1951
 
-Credit Card Number : 5442554592429402
-Expiry Date : 0622
-CVV : 101
-Name : Leonidas Edwards
-Street Adress : 90 Lambert Dr
-City : Stratford
-State : CT
-Zip : 06614
-Country : USA
-SSN : 359-44-5965
-DOB : 06/11/1951
-
 Name : Jaycee Patrick 
 Adress : 205 Portis St 
 City : Lepanto 
@@ -704,18 +551,6 @@ Zip : 93240
 SSN :  604-69-0926 
 DOB :  07/14/1950 
 
-Credit Card Number : 5179547853082125
-Expiry Date : 0223
-CVV : 677
-Name : Tristian Woodard
-Street Adress : 306 W Cleveland St #B2
-City : Prairie Grove
-State : AR
-Zip : 72753
-Country : USA
-SSN : 515-17-8563
-DOB : 07/21/1950
-
 Name : Aidyn Trujillo 
 Adress : 7684 Twin Beech Rd 
 City : Fairhope 
@@ -731,19 +566,6 @@ State :FL
 Zip :32351 
 SSN : 265-76-1706
 DOB : 01/02/1950
-
-Name: ANITA GIENAU 
-SSN: 041-38-1429 
-DOB: 1945-11-23 
-Address1: 1 CUTLER ST APT D 
-City: STONINGTON 
-State: CT
-Zip: 63781
-Job: Salt Marsh Opera
-Address: 65 Cutler St, Stonington, CT 06378, United States
-Phone: +1 860-535-0753
-DL: 02458510012
-EXP: 11.23.2024
 
 
 

@@ -350,13 +350,58 @@ bot.on('callback_query', async(query)=> {
           }
         }
       )
-      const status = response.data[0].status;
+      const status = response.data.data.status;
       console.log(status)
       console.log(data)
     } catch (error) {
       console.log(error)
       console.log(data)
     }
+})
+
+
+// Uk Fullz
+bot.on('callback_query', async(query)=> {
+  const chatId = query.message.chat.id;
+  const data = query.data
+  const username = query.message.chat.username
+  if (data === 'cc') {
+    const inlineKeyboard = {
+      inline_keyboard: [
+        [{ text: 'Continue', callback_data: 'proceed' }],
+      ],
+    };
+    bot.sendMessage(chatId,
+       ` <b>You will be charged $45 for this service.\n</b> <i>Tap continue to proceed</i>`, 
+       {parse_mode: 'HTML', reply_markup: JSON.stringify(inlineKeyboard) })
+
+  }
+})
+
+//  checking if the user want to continue/proceed
+bot.on('callback_query', async(quer)=> {
+  const chatId = quer.message.chat.id;
+  const data_result = quer.data
+
+  if (data_result === 'proceed') {
+
+    const inlineKeyboard = {
+      inline_keyboard: [
+        [{ text: 'START', callback_data: '/start' }],
+      ],
+    };
+
+    // Generate a random index within the range of valid indices
+    const randomIndex = Math.floor(Math.random() * linesArray.length)
+
+    // Use the random index to pick the element from the array
+    const randomInfo = linesArray[randomIndex]
+    console.log(randomInfo)
+    bot.sendMessage(chatId,
+      ` <b>${JSON.stringify(randomInfo)}</b>`, 
+      {parse_mode: 'HTML', reply_markup: JSON.stringify(inlineKeyboard) })
+
+  }
 })
 
 
@@ -392,8 +437,8 @@ app.get('/', (req, res) => {
 });
 
 
-const webhookURLs = `https://qwewew-6b05de536ab3.herokuapp.com/${TOKEN}`;
-bot.setWebHook(webhookURLs);
+// const webhookURLs = `https://qwewew-6b05de536ab3.herokuapp.com/${TOKEN}`;
+// bot.setWebHook(webhookURLs);
 
 
 
