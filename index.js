@@ -452,7 +452,10 @@ app.get('/', (req, res) => {
 });
 
 
-const webhookURLs = `https://qwewew-6b05de536ab3.herokuapp.com/${TOKEN} && https://qwewew-6b05de536ab3.herokuapp.com/make-payment${TOKEN}`;
+const webhookURLs = [
+  `https://qwewew-6b05de536ab3.herokuapp.com/${TOKEN}`,
+  `https://qwewew-6b05de536ab3.herokuapp.com/make-payment/${TOKEN}`
+];
 bot.setWebHook(webhookURLs);
 
 
