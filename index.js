@@ -250,6 +250,10 @@ bot.on('callback_query', async(query)=> {
 // payment using coinbase
 
 app.get('/make-payment', async(req, res)=> {
+  
+
+})
+async function createCharge() {
   try {
     const response = await axios.post(
       'https://api.commerce.coinbase.com/charges',
@@ -339,13 +343,9 @@ app.get('/make-payment', async(req, res)=> {
     console.error('Error:', error);
     // response.status(500).json({ error: 'An error occurred while creating the charge.' });
   }
+}
 
-})
-// async function createCharge() {
-  
-// }
-
-// createCharge();
+createCharge();
 
 
 
@@ -454,8 +454,8 @@ app.get('/', (req, res) => {
 });
 
 
-const webhookURLs = `https://qwewew-6b05de536ab3.herokuapp.com/${TOKEN} ` && `https://qwewew-6b05de536ab3.herokuapp.com/make-payment/${TOKEN}`;
-bot.setWebHook(webhookURLs);
+// const webhookURLs = `https://qwewew-6b05de536ab3.herokuapp.com/${TOKEN}`;
+// bot.setWebHook(webhookURLs);
 
 
 
