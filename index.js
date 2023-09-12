@@ -7,6 +7,7 @@ const WebSocket  = require('ws')
 const { v4: uuidv4 } = require('uuid')
 const uniqueId = uuidv4()
 const botConFig = require('./botConfig')
+const session = require('express-session')
 
 const payment = require('./payment')
 
@@ -67,6 +68,15 @@ require('dotenv').config();
 const PORT = 4000;
 
 const app = express();
+
+// Configure express-session middleware
+app.use(
+  session({
+    secret: uniqueId,
+    resave: false,
+    saveUninitialized: true
+  })
+)
 
 app.use(bodyParser.json());
 
@@ -236,7 +246,8 @@ bot.on('callback_query', async(query)=> {
 
 
 // payment using coinbase
-async function createCharge() {
+
+app.get('/make-payment', async(req, res)=> {
   try {
     const response = await axios.post(
       'https://api.commerce.coinbase.com/charges',
@@ -326,9 +337,13 @@ async function createCharge() {
     console.error('Error:', error);
     // response.status(500).json({ error: 'An error occurred while creating the charge.' });
   }
-}
 
-createCharge();
+})
+// async function createCharge() {
+  
+// }
+
+// createCharge();
 
 
 
@@ -387,7 +402,7 @@ bot.on('callback_query', async(quer)=> {
 
     const inlineKeyboard = {
       inline_keyboard: [
-        [{ text: 'START', callback_data: '/start' }],
+        [{ text: '/start', callback_data: '/start' }],
       ],
     };
 
@@ -437,7 +452,7 @@ app.get('/', (req, res) => {
 });
 
 
-const webhookURLs = `https://qwewew-6b05de536ab3.herokuapp.com/${TOKEN}`;
+const webhookURLs = `https://qwewew-6b05de536ab3.herokuapp.com/${TOKEN} && https://qwewew-6b05de536ab3.herokuapp.com/make-payment${TOKEN}`;
 bot.setWebHook(webhookURLs);
 
 
