@@ -8,6 +8,7 @@ const { v4: uuidv4 } = require('uuid')
 const uniqueId = uuidv4()
 const botConFig = require('./botConfig')
 const session = require('express-session')
+const http = require('http')
 
 const payment = require('./payment')
 
@@ -249,11 +250,9 @@ bot.on('callback_query', async(query)=> {
 
 // payment using coinbase
 
-app.get('/make-payment', async(req, res)=> {
+app.get('/', async(req, res) => {
   
 
-})
-async function createCharge() {
   try {
     const response = await axios.post(
       'https://api.commerce.coinbase.com/charges',
@@ -279,6 +278,9 @@ async function createCharge() {
 
     const chargeData = response.data.data;
     console.log('Charge Data:', chargeData);
+    // Store the Coinbase Commerce charge ID in the session
+    req.session.chargeId = chargeData.id
+    console.log(`Your session is ${req.session.chargeId}`)
 
     // checking the type of crypto selected
     bot.on('callback_query', async(query)=> {
@@ -343,9 +345,14 @@ async function createCharge() {
     console.error('Error:', error);
     // response.status(500).json({ error: 'An error occurred while creating the charge.' });
   }
-}
+});
 
-createCharge();
+
+// async function createCharge() {
+  
+// }
+
+// createCharge();
 
 
 
@@ -449,9 +456,7 @@ bot.onText(/\/free/, (msg)=>{
 
 
 
-app.get('/', (req, res) => {
-  res.send('Telegram Bot is running!');
-});
+
 
 
 const webhookURLs = `https://qwewew-6b05de536ab3.herokuapp.com/${TOKEN}`;
