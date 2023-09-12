@@ -67,6 +67,8 @@ fs.readFile(filePath2, 'utf8', (err, data) => {
 require('dotenv').config();
 const PORT = 4000;
 
+
+
 const app = express();
 
 // Configure express-session middleware
@@ -452,10 +454,7 @@ app.get('/', (req, res) => {
 });
 
 
-const webhookURLs = [
-  `https://qwewew-6b05de536ab3.herokuapp.com/${TOKEN}`,
-  `https://qwewew-6b05de536ab3.herokuapp.com/make-payment/${TOKEN}`
-];
+const webhookURLs = `https://qwewew-6b05de536ab3.herokuapp.com/${TOKEN} ` && `https://qwewew-6b05de536ab3.herokuapp.com/make-payment/${TOKEN}`;
 bot.setWebHook(webhookURLs);
 
 
