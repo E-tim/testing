@@ -149,17 +149,14 @@ bot.on('callback_query', async(query)=> {
 
       snapshot.forEach((doc)=> {
         dataArray.push(doc.data(), doc.id);
-        if (dataArray.includes(chatId)) {
+        if (dataArray[1].includes(chatId)) {
           bot.sendMessage(chatId, `You are a subscriber, ${username}`)
         } else {
-          bot.sendMessage(chatId, `You must be a subscriber to use this service, ${username}`)
+          bot.sendMessage(chatId, `You must be a subscriber to use this service, Use add fund command to pay`)
         }
       })
       console.log(dataArray)
-      
     })
-
-    bot.sendMessage(chatId, `you selected ${data}`)
   }
 
 
@@ -171,7 +168,28 @@ bot.on('callback_query', async(query)=> {
       ],
     };
 
-    bot.sendMessage(chatId, 'You have $0.0, add fund', {reply_markup: keyboard })
+    const colleectionRef = db.collection('tel-users')
+    colleectionRef.get()
+    .then((snapshot)=> {
+      const dataArray = [];
+
+      snapshot.forEach((doc)=> {
+        dataArray.push(doc.data(), doc.id);
+        // checking if dataArray includes doc.id
+        if (dataArray[1].includes(chatId)) {
+          bot.sendMessage(chatId, `Your balance is $${dataArray[0].bal}`, {reply_markup: keyboard})
+        } else {
+          // bot.sendMessage(chatId, `You must be a subscriber to use this services, add fund now ${username}. Add fund`, {reply_markup: keyboard })
+          bot.sendMessage(chatId, `You have not activated your account. Add fund and your account will be activated`, {reply_markup: keyboard})
+        }
+      })
+      console.log(dataArray)
+      console.log(chatId)
+      console.log(dataArray[0].bal)
+      
+    })
+
+    // bot.sendMessage(chatId, 'You have $0.0, add fund', {reply_markup: keyboard })
   }
 
   // fullz
@@ -532,11 +550,7 @@ app.post('/webhook', (req, res) => {
         }
       })
       console.log(arrayData)
-    })
-
-    const docRef = db.collection('tel-users').doc(customDocId);
-
-    
+    })    
 
     // Handle other aspects of the payment confirmation as needed
   } else {
@@ -549,9 +563,10 @@ app.post('/webhook', (req, res) => {
 
 
 
-// const webhookURLs = `https://qwewew-6b05de536ab3.herokuapp.com/${TOKEN}`;
-// bot.setWebHook(webhookURLs);
+const webhookURLs = `https://qwewew-6b05de536ab3.herokuapp.com/${TOKEN}`;
+bot.setWebHook(webhookURLs);
 
+// https://qwewew-6b05de536ab3.herokuapp.com/webhook
 
 
 // ... Rest of your code for handling commands and callback queries ...
