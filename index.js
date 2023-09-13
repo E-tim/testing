@@ -89,7 +89,7 @@ app.use(bodyParser.json());
 
 
 // Create a new bot instance
-const { TOKEN, SERVER_URL, API_KEY } = process.env;
+const { TOKEN, SERVER_URL, API_KEY, SECRET_KEY } = process.env;
 const URI = `/webhook/${TOKEN}`;
 const webhookURL = `${SERVER_URL || 'https://testing-one-coral.vercel.app/'}${URI}`;
 const TELEGRAM_API = `https://api.telegram.org/bot${TOKEN}`;
@@ -150,7 +150,20 @@ bot.on('callback_query', async(query)=> {
       snapshot.forEach((doc)=> {
         dataArray.push(doc.data(), doc.id);
         if (dataArray[1].includes(chatId)) {
-          bot.sendMessage(chatId, `You are a subscriber, ${username}`)
+          bot.sendMessage(chatId, `<i>Use the below format to check the CC or DC\n</i> <b>/check 8239382938782783-12-2026-587</b>`, {parse_mode: 'HTML'})
+          bot.onText(/\/check/, (msg)=> {
+            console.log(msg)
+            const removeFirstSixWords = msg.text.slice(7)
+            const parts = removeFirstSixWords.split('-')
+            console.log(parts)
+
+            
+
+            
+
+
+
+          })
         } else {
           bot.sendMessage(chatId, `You must be a subscriber to use this service, Use add fund command to pay`)
         }
