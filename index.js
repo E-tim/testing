@@ -17,53 +17,7 @@ const coinbase = require('coinbase-commerce-node')
 
 const fs = require('fs')
 const path = require('path')
-const filepath = 'ssnFulls.txt' 
 
-// Initialize an empty array to store the lines from the file
-const linesArray = [];
-// Read the file line by line and store each line in the array
-const readStream = fs.createReadStream(filepath, 'utf8');
-const lineReader = require('readline').createInterface({
-  input: readStream,
-});
-
-lineReader.on('line', (line) => {
-  linesArray.push(line);
-});
-lineReader.on('close', () => {
-  // At this point, 'linesArray' contains all the lines from the file
-  console.log(linesArray);
-
-  // Now, you can process the array to create objects or perform other tasks.
-});
-
-
-const filePath2 = 'fullz.txt';
-const linesPerObject = 8; // Number of lines to group into each object
-
-fs.readFile(filePath2, 'utf8', (err, data) => {
-  if (err) {
-    console.error('Error reading the file:', err);
-    return;
-  }
-
-  const lines = data.split('\n'); // Split the file content into an array of lines
-
-  const objectsArray = [];
-  for (let i = 0; i < lines.length; i += linesPerObject) {
-    const obj = {};
-    for (let j = 0; j < linesPerObject; j++) {
-      const lineNumber = i + j;
-      if (lineNumber < lines.length) {
-        // Use the line number as a key and the line content as a value in the object
-        obj[`line${j + 1}`] = lines[lineNumber];
-      }
-    }
-    objectsArray.push(obj);
-  }
-
-  console.log(objectsArray);
-});
 
 
 
