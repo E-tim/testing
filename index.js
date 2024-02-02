@@ -13,6 +13,7 @@ const NodeCache = require('node-cache')
 const myCache = new NodeCache();
 
 const payment = require('./payment')
+const coinbase = require('coinbase-commerce-node')
 
 const fs = require('fs')
 const path = require('path')
@@ -103,6 +104,11 @@ admin.initializeApp({
   credential: admin.credential.cert(serviceAccount)
 });
 const db = admin.firestore();
+
+// coinbase setup
+const client = coinbase.Client
+client.init(process.env.API_KEY)
+const Charge = coinbase.resources.Charge
 
 const commands = [
   // [{text: 'Balance', callback_data: 'balance'},{text: 'Add Fund', callback_data: 'add_fund'}],
@@ -211,7 +217,7 @@ bot.on('callback_query', async(query)=> {
     // defining command prompt
     const commands = [
       // [{text: 'Balance', callback_data: 'balance'},{text: 'Add Fund', callback_data: 'add_fund'}],
-      { text: ' UK Credit Card', callback_data: 'cc' },
+      { text: ' Credit Card', callback_data: 'cc' },
       { text: 'SSN', callback_data: 'ssn' },
       { text: 'Bank Log', callback_data: 'banklog' },
     ];
@@ -258,103 +264,108 @@ bot.on('callback_query', async(query)=> {
     const keyboard = {
       inline_keyboard: commands.map((command) => [{ text: command.text, callback_data: command.callback_data }])
     };
-    bot.sendMessage(chatId, 'Select the type of cryptocurrency', {reply_markup: keyboard })
+    // bot.sendMessage(chatId, 'Select the type of cryptocurrency', {reply_markup: keyboard })
+    const msgs = `<b>USE THE BELOW BTC WALLET TO ADD FUND\n</b>
+    `
+    const msgs1 = '<i>1HhkSzZqTQT5bEMwGwBSCqUavAbetShNaT</i>'
+    bot.sendMessage(chatId, msgs, {parse_mode: 'HTML'})
+    bot.sendMessage(chatId, msgs1, {parse_mode: 'HTML'})
 
-    async function createCharge() {
-      try {
-        const response = await axios.post(
-          'https://api.commerce.coinbase.com/charges',
-          {
-            name: 'Sample Payment',
-            description: 'Payment for a product or service',
-            pricing_type: 'fixed_price',
-            local_price: {
-              amount: '10.00',
-              currency: 'USD',
-            },
-            metadata: {
-              customer_id: chatId + uniqueId,
-            },
-          },
-          {
-            headers: {
-              'X-CC-Api-Key': API_KEY,
-              'X-CC-Version': '2018-03-22',
-            },
-          }
-        );
+    // async function createCharge() {
+    //   try {
+    //     const response = await axios.post(
+    //       'https://api.commerce.coinbase.com/charges',
+    //       {
+    //         name: 'Sample Payment',
+    //         description: 'Payment for a product or service',
+    //         pricing_type: 'fixed_price',
+    //         local_price: {, 
+    //           amount: '10.00',
+    //           currency: 'USD',
+    //         },
+    //         metadata: {
+    //           customer_id: chatId + uniqueId,
+    //         },
+    //       },
+    //       {
+    //         headers: {
+    //           'X-CC-Api-Key': API_KEY,
+    //           'X-CC-Version': '2018-03-22',
+    //         },
+    //       }
+    //     );
     
-        const chargeData = response.data.data;
-        console.log('Charge Data:', chargeData);
-        console.log('Customer Id:', chargeData.metadata.customer_id);
+    //     const chargeData = response.data.data;
+    //     console.log('Charge Data:', chargeData);
+    //     console.log('Customer Id:', chargeData.metadata.customer_id);
     
     
-        // checking the type of crypto selected
-        bot.on('callback_query', async(query)=> {
-          const chatId = query.message.chat.id;
-          const data = query.data
-          const username = query.message.chat.username
+    //     // checking the type of crypto selected
+    //     bot.on('callback_query', async(query)=> {
+    //       const chatId = query.message.chat.id;
+    //       const data = query.data
+    //       const username = query.message.chat.username
     
-          // html template to send to tel-user
-          if(data === 'bitcoin') {
-            const inlineKeyboard = {
-              inline_keyboard: [
-                [{ text: 'Completed', callback_data: chargeData.id }],
-              ],
-            };
-            bot.sendMessage(chatId,
-               ` <b>Use the below address for the payment and click complete when you have sent\n</b> <b>Bitcoin : </b>  <i>${chargeData.addresses.bitcoin}</i>`, 
-               {parse_mode: 'HTML', reply_markup: JSON.stringify(inlineKeyboard) })
-          }
-          if(data === 'litecoin') {
-            const inlineKeyboard = {
-              inline_keyboard: [
-                [{ text: 'Completed', callback_data: chargeData.id }],
-              ],
-            };
-            bot.sendMessage(chatId,
-               ` <b>Use the below address for the payment and click complete when you have sent\n</b> <b>Litecoin : </b>  <i>${chargeData.addresses.litecoin}</i>`, 
-               {parse_mode: 'HTML', reply_markup: JSON.stringify(inlineKeyboard) })
-          }
-          if(data === 'etherium') {
-            const inlineKeyboard = {
-              inline_keyboard: [
-                [{ text: 'Completed', callback_data: chargeData.id }],
-              ],
-            };
-            bot.sendMessage(chatId,
-               ` <b>Use the below address for the payment and click complete when you have sent\n</b> <b>Etherium : </b>  <i>${chargeData.addresses.etherium}</i>`, 
-               {parse_mode: 'HTML', reply_markup: JSON.stringify(inlineKeyboard) })
-          }
-          if(data === 'doge') {
-            const inlineKeyboard = {
-              inline_keyboard: [
-                [{ text: 'Completed', callback_data: chargeData.id }],
-              ],
-            };
-            bot.sendMessage(chatId,
-               ` <b>Use the below address for the payment and click complete when you have sent\n</b> <b>Doge : </b>  <i>${chargeData.addresses.dogecoin}</i>`, 
-               {parse_mode: 'HTML', reply_markup: JSON.stringify(inlineKeyboard) })
-          }
-          if(data === 'tether') {
-            const inlineKeyboard = {
-              inline_keyboard: [
-                [{ text: 'Completed', callback_data: chargeData.id }],
-              ],
-            };
-            bot.sendMessage(chatId,
-               ` <b>Use the below address for the payment and click complete when you have sent\n</b> <b>Tether : </b>  <i>${chargeData.addresses.tether}</i>`, 
-               {parse_mode: 'HTML', reply_markup: JSON.stringify(inlineKeyboard) })
-          }
-        })
+    //       // html template to send to tel-user
+    //       if(data === 'bitcoin') {
+    //         const inlineKeyboard = {
+    //           inline_keyboard: [
+    //             [{ text: 'Completed', callback_data: chargeData.id }],
+    //           ],
+    //         };
+    //         bot.sendMessage(chatId,
+    //            ` <b>Use the below address for the payment and click complete when you have sent\n</b> <b>Bitcoin : </b>  <i>${chargeData.addresses.bitcoin}</i>`, 
+    //            {parse_mode: 'HTML', reply_markup: JSON.stringify(inlineKeyboard) })
+    //       }
+    //       if(data === 'litecoin') {
+    //         const inlineKeyboard = {
+    //           inline_keyboard: [
+    //             [{ text: 'Completed', callback_data: chargeData.id }],
+    //           ],
+    //         };
+    //         bot.sendMessage(chatId,
+    //            ` <b>Use the below address for the payment and click complete when you have sent\n</b> <b>Litecoin : </b>  <i>${chargeData.addresses.litecoin}</i>`, 
+    //            {parse_mode: 'HTML', reply_markup: JSON.stringify(inlineKeyboard) })
+    //       }
+    //       if(data === 'etherium') {
+    //         const inlineKeyboard = {
+    //           inline_keyboard: [
+    //             [{ text: 'Completed', callback_data: chargeData.id }],
+    //           ],
+    //         };
+    //         bot.sendMessage(chatId,
+    //            ` <b>Use the below address for the payment and click complete when you have sent\n</b> <b>Etherium : </b>  <i>${chargeData.addresses.etherium}</i>`, 
+    //            {parse_mode: 'HTML', reply_markup: JSON.stringify(inlineKeyboard) })
+    //       }
+    //       if(data === 'doge') {
+    //         const inlineKeyboard = {
+    //           inline_keyboard: [
+    //             [{ text: 'Completed', callback_data: chargeData.id }],
+    //           ],
+    //         };
+    //         bot.sendMessage(chatId,
+    //            ` <b>Use the below address for the payment and click complete when you have sent\n</b> <b>Doge : </b>  <i>${chargeData.addresses.dogecoin}</i>`, 
+    //            {parse_mode: 'HTML', reply_markup: JSON.stringify(inlineKeyboard) })
+    //       }
+    //       if(data === 'tether') {
+    //         const inlineKeyboard = {
+    //           inline_keyboard: [
+    //             [{ text: 'Completed', callback_data: chargeData.id }],
+    //           ],
+    //         };
+    //         bot.sendMessage(chatId,
+    //            ` <b>Use the below address for the payment and click complete when you have sent\n</b> <b>Tether : </b>  <i>${chargeData.addresses.tether}</i>`, 
+    //            {parse_mode: 'HTML', reply_markup: JSON.stringify(inlineKeyboard) })
+    //       }
+    //     })
     
-      } catch (error) {
-        console.error('Error:', error);
-        // response.status(500).json({ error: 'An error occurred while creating the charge.' });
-      }
-    }
+    //   } catch (error) {
+    //     console.error('Error:', error);
+    //     // response.status(500).json({ error: 'An error occurred while creating the charge.' });
+    //   }
+    // }
     
-    createCharge();
+    // createCharge();
 
   }
 
