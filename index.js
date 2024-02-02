@@ -587,7 +587,7 @@ app.post('/webhook', (req, res) => {
 
 
 
-const webhookURLs = `https://qwewew-6b05de536ab3.herokuapp.com/${TOKEN}`;
+const webhookURLs = `https://testing-one-coral.vercel.app/${TOKEN}`;
 bot.setWebHook(webhookURLs);
 
 // https://qwewew-6b05de536ab3.herokuapp.com/webhook
