@@ -468,6 +468,8 @@ bot.onText(/\/free/, (msg)=>{
 
 app.get('/', (req, res) => {
   res.send('Telegram Bot is running!');
+  res.setHeader('Connection', 'keep-alive');
+
 });
 
 app.post('/webhook', (req, res) => {
