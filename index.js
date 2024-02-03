@@ -83,7 +83,7 @@ const keyboard = {
 
 bot.onText(/\/start/, (msg) => {
   bot.sendMessage(msg.chat.id, 
-                  `<b>Welcome to Chocolate Bot ! \n</b><i>To use any of our service, You must have atleast $35 in your account. Use ADD FUND command to pay.\n</i> <i>Please read our terms and conditions</i>`,
+                  `<b>Welcome to CC Bot ! \n</b><i>To use any of our service, You must have atleast $35 in your account. Use ADD FUND command to pay.\n</i> <i>Please read our terms and conditions</i>`,
                      {parse_mode: 'HTML',reply_markup: keyboard});
 
   // Set data in the cache
