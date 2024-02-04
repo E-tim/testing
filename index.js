@@ -466,12 +466,12 @@ bot.onText(/\/free/, (msg)=>{
 
 
 
-app.get('/', (req, res) => {
-  res.setHeader('Connection', 'keep-alive');
-  res.send('Telegram Bot is running!');
+// app.get('/', (req, res) => {
+//   res.setHeader('Connection', 'keep-alive');
+//   res.send('Telegram Bot is running!');
   
 
-});
+// });
 
 app.post('/webhook', (req, res) => {
   const webhookData = req.body;
